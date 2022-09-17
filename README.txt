@@ -17,3 +17,5 @@ $ gunicorn --bind 127.0.0.1:5000 app:app
 $ pip install waitress
 и введите команду
 $ waitress-serve --listen=127.0.0.1:5000 app:app
+
+Приятного обзора!
