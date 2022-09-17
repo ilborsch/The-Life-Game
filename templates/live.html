@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block app_content %}
+    <a href="/" class="btn btn-warning home">Домой!</a>
+    <a href="/live" class="btn btn-info refresh">Создать новую жизнь!</a>
+    <div class="counter">{{ life.count }}</div>
+    <table class="world" >
+        {% for i in range(life.world|length) %}
+            <tr>
+                {% for j in range(life.world[i]|length) %}
+                    {% if life.world[i][j] %}
+                        <td class="cell living-cell"></td>
+                    {% elif not life.world[i][j] and life.old_world[i][j] %}
+                        <td class="cell dead-cell"></td>
+                    {% else %}
+                        <td class="cell"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+setInterval ( () => window.location.reload(), 500);
+</script>
+{% endblock %}
